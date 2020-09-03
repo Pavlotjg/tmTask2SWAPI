@@ -34,17 +34,16 @@ function People () {
       <BackLinkWrap>
         <Link to="/">Back</Link>
       </BackLinkWrap>
-      <div>{ people.map(toPerson) }
-        <SearchBar
-          onSearch={
-            (value) => {
-              console.log(value);
-              setSearchQuery(value);
-            }
+      <SearchBar
+        onSearch={
+          (value) => {
+            console.log(value);
+            setSearchQuery(value);
           }
-          delay={400}
-        />
-      </div>
+        }
+        delay={400}
+      />
+      <div>{ people.map(toPerson) }</div>
     </div>
   );
 }

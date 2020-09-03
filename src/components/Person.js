@@ -46,6 +46,8 @@ function Person (props) {
       <PersonItem>Gender: { person.gender }</PersonItem>
       <PersonItem>Height: { person.height }</PersonItem>
       <PersonItem>Hair: { person.hair_color }</PersonItem>
+      <PersonItem>Mass: { person.mass }</PersonItem>
+      <PersonItem>Birth Year: { person.birth_year }</PersonItem>
       <div>Films: {person.films.map((elem) => {
         const numberPattern = /\d+/g;
         const result = elem.match( numberPattern );
