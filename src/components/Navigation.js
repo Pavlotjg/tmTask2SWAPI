@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 
-const StarterWrap = styled.span`
+const NavWrap = styled.span`
   padding: 10px;
   font-size: 25px;
   cursor: pointer;
@@ -12,22 +12,22 @@ const StarterWrap = styled.span`
     color: black;
   }
 `;
-const StarterCont = styled.div`
+const Container = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
 `;
 
-function Starter() {
+function Navigation() {
   return (
-    <StarterCont>
+    <Container>
       <Link to="/people">
-        <StarterWrap>People</StarterWrap>
+        <NavWrap>People</NavWrap>
       </Link>
       <Link to="/films">
-        <StarterWrap>Films</StarterWrap>
+        <NavWrap>Films</NavWrap>
       </Link>
-    </StarterCont>
+    </Container>
   )
 }
 
-export default Starter;
+export default Navigation;

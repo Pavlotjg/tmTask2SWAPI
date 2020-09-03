@@ -10,7 +10,6 @@ const BackLinkWrap = styled.div`
   margin: 10px 0;
   width: 50px;
   :hover {
-    /*background-color: brown;*/
     border: 2px solid white;
   }
 `;
@@ -22,7 +21,6 @@ function Films() {
     axios.get('https://swapi.dev/api/films/').then(
       res => {
         setFilms(res.data.results);
-        console.log(res.data.results);
       }
     )
   }, []);

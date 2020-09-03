@@ -17,22 +17,19 @@ const BackLinkWrap = styled.div`
   margin: 10px 0;
   width: 50px;
   :hover {
-    /*background-color: brown;*/
     border: 2px solid white;
   }
 `;
 
-function Person (props) {
+function Person() {
   const [person, setPerson] = useState();
-  let { personId } = useParams();     //// useParams()
-
+  let {personId} = useParams();
   useEffect(() => {
     axios.get(`https://swapi.dev/api/people/${personId}/`)
       .then((res) => {
-        console.log(res);
         setPerson(res.data);
       });
-  }, [setPerson]);
+  }, []);
 
   if (!person) {
     return <div>Loading...</div>;
@@ -42,19 +39,22 @@ function Person (props) {
       <BackLinkWrap>
         <Link to="/people/">Back</Link>
       </BackLinkWrap>
-      <PersonItem>Name: { person.name }</PersonItem>
-      <PersonItem>Gender: { person.gender }</PersonItem>
-      <PersonItem>Height: { person.height }</PersonItem>
-      <PersonItem>Hair: { person.hair_color }</PersonItem>
-      <PersonItem>Mass: { person.mass }</PersonItem>
-      <PersonItem>Birth Year: { person.birth_year }</PersonItem>
+      <PersonItem>Name: {person.name}</PersonItem>
+      <PersonItem>Gender: {person.gender}</PersonItem>
+      <PersonItem>Height: {person.height}</PersonItem>
+      <PersonItem>Hair: {person.hair_color}</PersonItem>
+      <PersonItem>Mass: {person.mass}</PersonItem>
+      <PersonItem>Birth Year: {person.birth_year}</PersonItem>
       <div>Films: {person.films.map((elem) => {
         const numberPattern = /\d+/g;
-        const result = elem.match( numberPattern );
-        return <Link to={`/films/${result}`}>
-          <Wrapper>Episode {result[0]}</Wrapper>
-        </Link>
-      })}</div>
+        const result = elem.match(numberPattern);
+        return (
+          <Link to={`/films/${result}`}>
+            <Wrapper>Episode {result[0]}</Wrapper>
+          </Link>
+        )
+      })}
+      </div>
     </Container>
   );
 }

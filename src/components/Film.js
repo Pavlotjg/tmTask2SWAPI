@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import styled from "styled-components";
 
 const FilmWrap = styled.div`
@@ -15,18 +15,16 @@ const BackLinkWrap = styled.div`
   margin: 10px 0;
   width: 50px;
   :hover {
-    /*background-color: brown;*/
     border: 2px solid white;
   }
 `;
 
 function Film() {
   const [ film, setFilm] = useState({});
-
+  const { id } = useParams();
   useEffect(() => {
-    axios.get(`https://swapi.dev/api${document.location.pathname}/`).then(
+    axios.get(`https://swapi.dev/api/films/${id}/`).then(
       res => {
-        console.log(res.data);
         setFilm(res.data);
       }
     )
