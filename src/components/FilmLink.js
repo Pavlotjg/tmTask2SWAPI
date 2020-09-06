@@ -4,9 +4,9 @@ import Wrapper from "./Wrapper";
 
 function FilmLink({film}) {
   return(
-    <Link to={`/films/${film.episode_id}`}>
-      <Wrapper>{film.title}</Wrapper>
-    </Link>
+      <Link to={`/films/${film.episode_id}`}>
+        <Wrapper>{film.title}</Wrapper>
+      </Link>
   )
 }
 

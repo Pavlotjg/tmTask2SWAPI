@@ -1,18 +1,9 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import styled from "styled-components";
 
 import FilmLink from "./FilmLink";
-
-const BackLinkWrap = styled.div`
-  padding: 10px;
-  margin: 10px 0;
-  width: 50px;
-  :hover {
-    border: 2px solid white;
-  }
-`;
+import {BackLinkWrap} from "./BackLinkWrap";
 
 function Films() {
   const [ films, setFilms ] = useState([]);

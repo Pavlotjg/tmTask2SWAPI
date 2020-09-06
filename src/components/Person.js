@@ -4,21 +4,14 @@ import axios from "axios";
 import styled from "styled-components";
 
 import Wrapper from "./Wrapper";
+import {BackLinkWrap} from "./BackLinkWrap";
 
 const Container = styled.div`
-  padding: 10px;
-  color:white;
+ padding: 10px; 
+ color: ${(props) => props.theme.color};
 `;
 const PersonItem = styled.div`
   padding: 10px 0;
-`;
-const BackLinkWrap = styled.div`
-  padding: 10px;
-  margin: 10px 0;
-  width: 50px;
-  :hover {
-    border: 2px solid white;
-  }
 `;
 
 function Person() {
@@ -35,27 +28,29 @@ function Person() {
     return <div>Loading...</div>;
   }
   return (
-    <Container>
-      <BackLinkWrap>
-        <Link to="/people/">Back</Link>
-      </BackLinkWrap>
-      <PersonItem>Name: {person.name}</PersonItem>
-      <PersonItem>Gender: {person.gender}</PersonItem>
-      <PersonItem>Height: {person.height}</PersonItem>
-      <PersonItem>Hair: {person.hair_color}</PersonItem>
-      <PersonItem>Mass: {person.mass}</PersonItem>
-      <PersonItem>Birth Year: {person.birth_year}</PersonItem>
-      <div>Films: {person.films.map((elem) => {
-        const numberPattern = /\d+/g;
-        const result = elem.match(numberPattern);
-        return (
-          <Link to={`/films/${result}`}>
-            <Wrapper>Episode {result[0]}</Wrapper>
-          </Link>
-        )
-      })}
+      <div>
+        <BackLinkWrap>
+          <Link to="/people/">Back</Link>
+        </BackLinkWrap>
+        <Container>
+          <PersonItem>Name: {person.name}</PersonItem>
+          <PersonItem>Gender: {person.gender}</PersonItem>
+          <PersonItem>Height: {person.height}</PersonItem>
+          <PersonItem>Hair: {person.hair_color}</PersonItem>
+          <PersonItem>Mass: {person.mass}</PersonItem>
+          <PersonItem>Birth Year: {person.birth_year}</PersonItem>
+          <div>Films: {person.films.map((elem) => {
+            const numberPattern = /\d+/g;
+            const result = elem.match(numberPattern);
+            return (
+              <Link to={`/films/${result}`}>
+                <Wrapper>Episode {result[0]}</Wrapper>
+              </Link>
+            )
+          })}
+          </div>
+        </Container>
       </div>
-    </Container>
   );
 }
 

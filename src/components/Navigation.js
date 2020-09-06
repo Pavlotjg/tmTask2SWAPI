@@ -6,7 +6,7 @@ const NavWrap = styled.span`
   padding: 10px;
   font-size: 25px;
   cursor: pointer;
-  color: white;
+  color: ${(props) => props.theme.color};
   &:hover {
     background-color: orange;
     color: black;

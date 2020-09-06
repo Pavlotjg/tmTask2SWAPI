@@ -1,13 +1,13 @@
-import React, {useCallback, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const InputWrapper = styled.div`
   padding: 10px;
   width: 300px;
-  color: white;
+  color: ${(props) => props.theme.color};
   &:hover {
     background-color: darkorange;
-    color: black;
+    color: ${(props) => props.theme.color};
   }
 `;
 
@@ -15,6 +15,11 @@ function SearchBar(props) {
   const [ searchValue, setSearchValue ] = useState('');
 
   let myTimeOut = useRef();
+  let inputContainer = useRef();
+
+  useEffect(() => {
+    inputContainer.current.focus();
+  }, []);
 
   const someMethod = useCallback((event) => {
     const {value} = event.target;
@@ -25,13 +30,14 @@ function SearchBar(props) {
     }, props.delay);
   }, []);
   return (
-    <Wrapper>Filter:
+    <InputWrapper>Filter:
       <input type="text"
+             ref={inputContainer}
              value={searchValue}
              onChange={someMethod}
              placeholder='find person via name...'
       />
-    </Wrapper>
+    </InputWrapper>
   )
 }
 
